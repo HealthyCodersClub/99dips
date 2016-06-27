@@ -1,0 +1,22 @@
+{
+  "name": "fit4all",
+  "version": "0.0.0",
+  "description": "Fitness Club management Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mahesh-kedari/fit4all.git"
+  },
+  "keywords": [
+    "fit4all",
+    "fitness"
+  ],
+  "author": "mahesh-kedari",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/mahesh-kedari/fit4all/issues"
+  }
+}
