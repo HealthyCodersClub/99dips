@@ -1,0 +1,11 @@
+<club-add></club-add>
+
+<ul>
+  <li ng-repeat="club in clubsList.clubs">
+    <a ui-sref="clubDetails({ clubId: club._id })">
+      {{club.name}}
+    </a>
+    <p>{{club.description}}</p>
+    <club-remove club="club"></club-remove>
+  </li>
+</ul>
