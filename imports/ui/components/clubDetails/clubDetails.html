@@ -1,8 +1,14 @@
 The club your selected is:
 <form>
-  Club name: <input type="text" ng-model="clubDetails.club.name" />
-  Description: <input type="text" ng-model="clubDetails.club.description" />
+  Club name: <input type="text" ng-model="clubDetails.club.name" /> Description: <input type="text" ng-model="clubDetails.club.description"
+  /> Public Club? <input type="checkbox" ng-model="clubDetails.club.public">
   <button ng-click="clubDetails.save()">Save</button>
 </form>
 
 <button ui-sref="clubs">Back</button>
+<ul>
+  Users:
+  <li ng-repeat="user in clubDetails.users">
+    <div>{{ user.emails[0].address }}</div>
+  </li>
+</ul>

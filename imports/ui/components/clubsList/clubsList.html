@@ -6,6 +6,7 @@
       {{club.name}}
     </a>
     <p>{{club.description}}</p>
+    <p ng-show="club.public" style="font-size:0.8em">Public</p>
     <club-remove club="club"></club-remove>
   </li>
 </ul>

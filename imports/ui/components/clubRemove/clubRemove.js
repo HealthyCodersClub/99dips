@@ -2,7 +2,7 @@ import angular from 'angular';
 import angularMeteor from 'angular-meteor';
 
 import template from './clubRemove.html';
-import { Clubs } from '../../../api/clubs/index';
+import { Clubs } from '../../../api/clubs';
 
 class ClubRemove {
   remove() {

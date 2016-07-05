@@ -3,7 +3,7 @@ import angularMeteor from 'angular-meteor';
 import uiRouter from 'angular-ui-router';
 
 import template from './clubsList.html';
-import { Clubs } from '../../../api/clubs/index';
+import { Clubs } from '../../../api/clubs';
 import { name as ClubAdd } from '../clubAdd/clubAdd';
 import { name as ClubRemove } from '../clubRemove/clubRemove';
 

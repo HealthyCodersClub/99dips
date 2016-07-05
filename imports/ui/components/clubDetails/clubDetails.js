@@ -5,7 +5,7 @@ import uiRouter from 'angular-ui-router';
 import { Meteor } from 'meteor/meteor';
 
 import template from './clubDetails.html';
-import { Clubs } from '../../../api/clubs/index';
+import { Clubs } from '../../../api/clubs';
 
 class ClubDetails {
   constructor($stateParams, $scope, $reactive) {
@@ -14,12 +14,16 @@ class ClubDetails {
     $reactive(this).attach($scope);
 
     this.clubId = $stateParams.clubId;
-
+    this.subscribe('clubs');
+    this.subscribe('users');
     this.helpers({
       club() {
         return Clubs.findOne({
           _id: $stateParams.clubId
         });
+      },
+      users(){
+        return Meteor.users.find({});
       }
     });
   }
@@ -30,7 +34,8 @@ class ClubDetails {
     }, {
       $set: {
         name: this.club.name,
-        description: this.club.description
+        description: this.club.description,
+        public: this.club.public
       }
     }, (error) => {
       if (error) {
