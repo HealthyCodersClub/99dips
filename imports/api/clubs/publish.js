@@ -1,9 +1,11 @@
 import { Meteor } from 'meteor/meteor';
  
+import { Counts } from 'meteor/tmeasday:publish-counts';
+
 import { Clubs } from './collection';
  
 if (Meteor.isServer) {
-  Meteor.publish('clubs', function() {
+  Meteor.publish('clubs', function(options, searchString) {
     const selector = {
       $or: [{
         // the public clubs
@@ -25,7 +27,16 @@ if (Meteor.isServer) {
         }]
       }]
     };
- 
-    return Clubs.find(selector);
+    if (typeof searchString === 'string' && searchString.length) {
+      selector.name = {
+        $regex: `.*${searchString}.*`,
+        $options : 'i'
+      };
+    }
+    Counts.publish(this, 'numberOfClubs', Clubs.find(selector), {
+      noReady: true
+    });
+
+    return Clubs.find(selector, options);
   });
 }

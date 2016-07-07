@@ -1,0 +1,6 @@
+<ul>
+  Users to invite:
+  <li ng-repeat="user in clubUninvited.users | uninvitedFilter:clubUninvited.club>
+    <div>{{ user | displayNameFilter }}</div>
+  </li>
+</ul>

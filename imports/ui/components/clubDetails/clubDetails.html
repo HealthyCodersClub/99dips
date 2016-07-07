@@ -6,9 +6,5 @@ The club your selected is:
 </form>
 
 <button ui-sref="clubs">Back</button>
-<ul>
-  Users:
-  <li ng-repeat="user in clubDetails.users">
-    <div>{{ user.emails[0].address }}</div>
-  </li>
-</ul>
+
+<club-uninvited club="clubDetails.club"></club-uninvited>

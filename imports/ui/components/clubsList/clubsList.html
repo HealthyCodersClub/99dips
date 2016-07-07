@@ -1,12 +1,17 @@
 <club-add></club-add>
 
+<input type="search" ng-model="partiesList.searchText" placeholder="Search" />
+
+<clubs-sort on-change="clubsList.sortChanged(sort)" property="name" order="1"></clubs-sort>
 <ul>
-  <li ng-repeat="club in clubsList.clubs">
+  <li dir-paginate="club in clubsList.clubs | itemsPerPage: clubsList.perPage" total-items="clubsList.clubsCount">
     <a ui-sref="clubDetails({ clubId: club._id })">
       {{club.name}}
     </a>
     <p>{{club.description}}</p>
     <p ng-show="club.public" style="font-size:0.8em">Public</p>
     <club-remove club="club"></club-remove>
+    <club-creator club="club"></club-creator>
   </li>
 </ul>
+<dir-pagination-controls on-page-change="clubsList.pageChanged(newPageNumber)"></dir-pagination-controls>
