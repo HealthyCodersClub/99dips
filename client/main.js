@@ -1,16 +1,21 @@
 import angular from 'angular';
-import angularMeteor from 'angular-meteor';
+import 'bootstrap/dist/css/bootstrap.css';
 
-import { name as _99dips } from '../imports/ui/components/99dips/99dips';
+import {name as home} from '../imports/ui/components/home/home';
 
+/**
+ * Ready Function
+ */
 function onReady() {
   angular.bootstrap(document, [
-    _99dips
+    home
   ], {
     strictDi: true
   });
 }
- 
+/**
+ * Cordova configuration
+ */
 if (Meteor.isCordova) {
   angular.element(document).on('deviceready', onReady);
 } else {
