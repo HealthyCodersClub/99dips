@@ -3,11 +3,11 @@ import angularMeteor from 'angular-meteor';
  
 import { Meteor } from 'meteor/meteor';
  
-import template from './clubUninvited.html';
-import { name as UninvitedFilter } from '../../filters/uninvitedFilter';
+import template from './clubInvited.html';
+import { name as InvitedFilter } from '../../filters/invitedFilter';
 import { name as DisplayNameFilter } from '../../filters/displayNameFilter';
  
-class ClubUninvited {
+class ClubInvited {
   constructor($scope) {
     'ngInject';
  
@@ -19,25 +19,26 @@ class ClubUninvited {
       }
     });
   }
-  invite(user) {
-    Meteor.call('invite', this.club._id, user._id,
+  remove(user) {
+    console.log(user._id);
+    Meteor.call('revokeInvitation', this.club._id, user._id,
       (error) => {
         if (error) {
-          console.log('Oops, unable to invite!');
+          console.dir(error);
         } else {
-          console.log('Invited!');
+          console.log('Revoked!');
         }
       }
     );
   }
 }
  
-const name = 'clubUninvited';
+const name = 'clubInvited';
  
 // create a module
 export default angular.module(name, [
   angularMeteor,
-  UninvitedFilter,
+  InvitedFilter,
   DisplayNameFilter
 ]).component(name, {
   template,
@@ -45,5 +46,5 @@ export default angular.module(name, [
   bindings: {
     club: '<'
   },
-  controller: ClubUninvited
+  controller: ClubInvited
 });

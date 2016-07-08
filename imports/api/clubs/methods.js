@@ -61,7 +61,21 @@ export function invite(clubId, userId) {
     }
   }
 }
- 
+
+export function revokeInvitation(clubId, userId){
+  const club = Clubs.findOne(clubId);
+  if(club.owner === userId){
+    throw new Meteor.Error(400, 'Club Owner cannot be removed : ' + club.owner + ' : ' + this.userId);
+  }else if(club.public){
+    throw new Meteor.Error(400, 'This is a public Club. No user can be removed');
+  }else{
+    Clubs.update(clubId, {
+      $pull: {
+        invited: userId
+      }
+    });
+  }
+}
  export function rsvp(clubId, rsvp) {
   check(clubId, String);
   check(rsvp, String);
@@ -139,5 +153,6 @@ export function invite(clubId, userId) {
 }
 Meteor.methods({
   invite,
+  revokeInvitation,
   rsvp
 });

@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/meteor';
 import template from './clubDetails.html';
 import { Clubs } from '../../../api/clubs';
 import { name as ClubUninvited } from '../clubUninvited/clubUninvited';
+import { name as ClubInvited } from '../clubInvited/clubInvited';
 
 class ClubDetails {
   constructor($stateParams, $scope, $reactive) {
@@ -54,7 +55,8 @@ const name = 'clubDetails';
 export default angular.module(name, [
   angularMeteor,
   uiRouter,
-  ClubUninvited
+  ClubUninvited,
+  ClubInvited
 ]).component(name, {
   template,
   controllerAs: name,

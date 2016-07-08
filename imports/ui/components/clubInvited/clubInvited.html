@@ -1,0 +1,7 @@
+<ul>
+  Invited Users:
+  <li ng-repeat="user in clubInvited.users | invitedFilter:clubInvited.club">
+    <div>{{ user | displayNameFilter }}</div>
+    <button ng-click="clubInvited.remove(user)">X</button>
+  </li>
+</ul>
